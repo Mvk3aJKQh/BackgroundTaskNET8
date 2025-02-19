@@ -1,1 +1,3 @@
 # BackgroundTaskNET8
+
+In the repository project, you may encounter build issues if "Platforms" and "RuntimeIdentifiers" elements are present in the BackgroundTask.csproj file.  I had to comment those out to successfully build the solution.  In BackgroundTaskNET8.csproj, I added a condition for the project reference because there are build issues caused by incompatibility with the other MAUI platforms.  And the WinRT.Host.runtimeconfig.json file may cause a build error because it's trying to copy a duplicate within the payload.  After encountering that build error, I changed properties for the file to "Do not copy".  Build was successful then.  I was then able to change the property back to "Copy if newer" and there was no further error.
